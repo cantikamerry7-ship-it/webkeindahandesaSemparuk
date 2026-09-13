@@ -353,10 +353,17 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
 
     status.textContent = "Mengirim...";
 
+    // Membuat iframe tersembunyi
+    const iframe = document.createElement("iframe");
+    iframe.name = "hiddenFrame";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+
+    // Membuat form untuk dikirim ke Google Script
     const formKirim = document.createElement("form");
     formKirim.method = "POST";
     formKirim.action = scriptURL;
-    formKirim.target = "_blank";
+    formKirim.target = "hiddenFrame";
 
     const inputNama = document.createElement("input");
     inputNama.name = "nama";
@@ -377,9 +384,16 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
     document.body.appendChild(formKirim);
     formKirim.submit();
 
+    // Pesan yang tampil di website
     status.textContent = "Aspirasi berhasil dikirim 🌿";
+
     document.getElementById("bukuTamuForm").reset();
+
     formKirim.remove();
+
+    setTimeout(() => {
+        iframe.remove();
+    }, 3000);
 });
 </script>
     
