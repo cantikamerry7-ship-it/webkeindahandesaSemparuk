@@ -364,44 +364,42 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
 
     const nama = document.getElementById("nama").value;
     const email = document.getElementById("email").value;
+    const kontak = document.getElementById("kontak").value;
+    const jenis = document.getElementById("jenis").value;
     const pesan = document.getElementById("pesan").value;
     const status = document.getElementById("statusPesan");
 
     status.textContent = "Mengirim...";
 
-    // Membuat iframe tersembunyi
     const iframe = document.createElement("iframe");
     iframe.name = "hiddenFrame";
     iframe.style.display = "none";
     document.body.appendChild(iframe);
 
-    // Membuat form untuk dikirim ke Google Script
     const formKirim = document.createElement("form");
     formKirim.method = "POST";
     formKirim.action = scriptURL;
     formKirim.target = "hiddenFrame";
 
-    const inputNama = document.createElement("input");
-    inputNama.name = "nama";
-    inputNama.value = nama;
+    const data = {
+        nama: nama,
+        email: email,
+        kontak: kontak,
+        jenis: jenis,
+        pesan: pesan
+    };
 
-    const inputEmail = document.createElement("input");
-    inputEmail.name = "email";
-    inputEmail.value = email;
-
-    const inputPesan = document.createElement("input");
-    inputPesan.name = "pesan";
-    inputPesan.value = pesan;
-
-    formKirim.appendChild(inputNama);
-    formKirim.appendChild(inputEmail);
-    formKirim.appendChild(inputPesan);
+    Object.keys(data).forEach(function(key) {
+        const input = document.createElement("input");
+        input.name = key;
+        input.value = data[key];
+        formKirim.appendChild(input);
+    });
 
     document.body.appendChild(formKirim);
     formKirim.submit();
 
-    // Pesan yang tampil di website
-    status.textContent = "Aspirasi berhasil dikirim 🌿";
+    status.textContent = "Aduan berhasil dikirim 🌿";
 
     document.getElementById("bukuTamuForm").reset();
 
@@ -412,9 +410,8 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
     }, 3000);
 });
 </script>
-    
-<script src="script.js"></script>
 
+<script src="script.js"></script>
 </body>
 
 </html>
