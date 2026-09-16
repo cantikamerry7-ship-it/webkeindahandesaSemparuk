@@ -881,13 +881,8 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
     document.body.appendChild(formKirim);
     formKirim.submit();
 
-    status.innerHTML =
-        "Aduan berhasil dikirim 🌿<br><br>" +
-        "<strong>Kode Aduan Anda:</strong><br>" +
-        "<span style='font-size:22px; font-weight:bold;'>" +
-        kode +
-        "</span><br><br>" +
-        "Simpan kode ini untuk mengecek tanggapan admin.";
+    status.textContent = "Aduan berhasil dikirim 🌿";
+
 
     document.getElementById("bukuTamuForm").reset();
 
