@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Kontak Desa Semparuk</title>
+  <title>Kontak | Harmoni Desa</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -25,6 +25,7 @@
       <a href="galeri.html">Galeri</a>
       <a href="lokasi.html">Lokasi</a>
       <a href="kontak.html" class="active">Kontak</a>
+      <a href="admin-login.html">Admin</a>
     </nav>
   </header>
 
@@ -36,13 +37,20 @@
     <h1>Kontak Desa Semparuk</h1>
 
     <p>
-      Sampaikan pertanyaan, saran, dan pengaduan masyarakat.
+      Sampaikan saran, pertanyaan, dan aspirasi
+      untuk kemajuan Desa Semparuk.
     </p>
   </section>
 
 
   <!-- INFORMASI KONTAK -->
   <section class="section">
+
+    <div class="location-heading">
+      <p class="small-title">INFORMASI</p>
+
+      <h2>Hubungi Kami</h2>
+    </div>
 
     <div class="location-info">
 
@@ -62,11 +70,23 @@
       <div class="location-card">
         <div class="location-icon">💬</div>
 
-        <h3>Layanan Aspirasi</h3>
+        <h3>Layanan Masyarakat</h3>
 
         <p>
-          Sampaikan aspirasi dan
-          pengaduan melalui formulir.
+          Sampaikan pendapat dan
+          aspirasi melalui formulir.
+        </p>
+      </div>
+
+
+      <div class="location-card">
+        <div class="location-icon">🤝</div>
+
+        <h3>Komunikasi</h3>
+
+        <p>
+          Bersama membangun desa
+          yang lebih baik.
         </p>
       </div>
 
@@ -75,13 +95,17 @@
   </section>
 
 
-  <!-- FORM ADUAN -->
+  <!-- FORM PENGADUAN -->
   <section class="section">
 
     <div class="location-heading">
       <p class="small-title">RUANG ASPIRASI</p>
 
       <h2>Pengajuan Aduan</h2>
+
+      <p>
+        Isi formulir berikut dengan data yang benar.
+      </p>
     </div>
 
 
@@ -91,7 +115,10 @@
       target="hiddenFrame"
       onsubmit="berhasilKirim()">
 
-      <input type="hidden" name="action" value="kirimAduan">
+      <input
+        type="hidden"
+        name="action"
+        value="kirimAduan">
 
       <input
         type="text"
@@ -102,7 +129,7 @@
       <input
         type="email"
         name="email"
-        placeholder="Email"
+        placeholder="Alamat email"
         required>
 
       <input
@@ -120,15 +147,21 @@
 
       <textarea
         name="pesan"
-        placeholder="Tuliskan pesan atau aduan"
         rows="5"
+        placeholder="Tuliskan pesan atau aduan kamu..."
         required></textarea>
 
-      <button type="submit">Kirim Aduan</button>
+      <button type="submit">
+        Kirim Aduan
+      </button>
 
     </form>
 
-    <iframe name="hiddenFrame" style="display:none;"></iframe>
+
+    <iframe
+      name="hiddenFrame"
+      style="display:none;">
+    </iframe>
 
     <p id="pesanBerhasil"></p>
 
@@ -139,10 +172,16 @@
   <section class="section">
 
     <div class="location-heading">
-      <p class="small-title">STATUS ADUAN</p>
+      <p class="small-title">STATUS PENGAJUAN</p>
 
       <h2>Cek Aduan</h2>
+
+      <p>
+        Masukkan email untuk melihat status
+        dan tanggapan admin.
+      </p>
     </div>
+
 
     <input
       type="email"
@@ -150,7 +189,11 @@
       placeholder="Masukkan email"
       required>
 
-    <button onclick="cekAduan()">Cek Status</button>
+
+    <button onclick="cekAduan()">
+      Cek Status Aduan
+    </button>
+
 
     <div id="hasilCek"></div>
 
@@ -163,6 +206,7 @@
   </footer>
 
 
+  <!-- JAVASCRIPT -->
   <script>
 
     const scriptURLCek =
@@ -172,8 +216,10 @@
     function berhasilKirim() {
 
       setTimeout(function() {
+
         document.getElementById("pesanBerhasil").innerText =
         "Aduan berhasil dikirim ✓";
+
       }, 1000);
 
     }
@@ -182,14 +228,23 @@
     function cekAduan() {
 
       const email =
-      document.getElementById("emailCek").value;
+      document.getElementById("emailCek").value.trim();
+
 
       if (!email) {
+
         alert("Masukkan email terlebih dahulu.");
+
         return;
+
       }
 
-      fetch(scriptURLCek + "?action=cekAduan&email=" + encodeURIComponent(email))
+
+      fetch(
+        scriptURLCek +
+        "?action=cekAduan&email=" +
+        encodeURIComponent(email)
+      )
 
       .then(response => response.json())
 
@@ -203,11 +258,15 @@
         } else {
 
           document.getElementById("hasilCek").innerHTML =
-          "<p><b>Nama:</b> " + data.nama +
-          "</p><p><b>Jenis:</b> " + data.jenis +
-          "</p><p><b>Status:</b> " + data.status +
-          "</p><p><b>Tanggapan:</b> " + data.tanggapan +
-          "</p>";
+
+          "<p><b>Nama:</b> " + data.nama + "</p>" +
+
+          "<p><b>Jenis Aduan:</b> " + data.jenis + "</p>" +
+
+          "<p><b>Status:</b> " + data.status + "</p>" +
+
+          "<p><b>Tanggapan Admin:</b> " +
+          data.tanggapan + "</p>";
 
         }
 
@@ -216,7 +275,7 @@
       .catch(error => {
 
         document.getElementById("hasilCek").innerText =
-        "Terjadi kesalahan. Coba lagi.";
+        "Terjadi kesalahan. Silakan coba lagi.";
 
       });
 
@@ -228,4 +287,4 @@
   <script src="script.js"></script>
 
 </body>
-        </html>
+</html>
