@@ -714,54 +714,52 @@ function cekAduan() {
         "?action=cekAduan&email=" +
         encodeURIComponent(email)
     )
+<script>
+
+const scriptURLCek =
+"https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec";
+
+function cekAduan() {
+
+    const email = document.getElementById("emailCek").value.trim();
+    const hasil = document.getElementById("hasilCekAduan");
+
+    if (email === "") {
+        hasil.innerHTML = "<p>Silakan masukkan email.</p>";
+        return;
+    }
+
+    hasil.innerHTML = "<p>Mencari aduan...</p>";
+
+    fetch(
+        scriptURLCek +
+        "?action=cekAduan&email=" +
+        encodeURIComponent(email)
+    )
 
     .then(response => response.json())
 
     .then(data => {
 
         if (data.status === "tidak_ditemukan") {
-
-            hasil.innerHTML =
-            "<p>Aduan dengan email tersebut tidak ditemukan.</p>";
-
+            hasil.innerHTML = "<p>Aduan tidak ditemukan.</p>";
             return;
         }
 
         hasil.innerHTML = `
-
             <div class="hasil-aduan">
-
-                <p>
-                    <strong>Nama:</strong><br>
-                    ${data.nama}
-                </p>
-
-                <p>
-                    <strong>Jenis Aduan:</strong><br>
-                    ${data.jenis}
-                </p>
-
-                <p>
-                    <strong>Status:</strong><br>
-                    ${data.status}
-                </p>
-
-                <p>
-                    <strong>Tanggapan Admin:</strong><br>
-                    ${data.tanggapan || "Belum ada tanggapan dari admin."}
-                </p>
-
+                <p><strong>Nama:</strong><br>${data.nama}</p>
+                <p><strong>Jenis Aduan:</strong><br>${data.jenis}</p>
+                <p><strong>Status:</strong><br>${data.status}</p>
+                <p><strong>Tanggapan Admin:</strong><br>
+                ${data.tanggapan || "Belum ada tanggapan."}</p>
             </div>
-
         `;
 
     })
 
     .catch(error => {
-
-        hasil.innerHTML =
-        "<p>Terjadi kesalahan. Silakan coba lagi.</p>";
-
+        hasil.innerHTML = "<p>Terjadi kesalahan. Silakan coba lagi.</p>";
     });
 
 }
