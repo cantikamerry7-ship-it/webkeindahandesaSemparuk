@@ -180,6 +180,11 @@
             color: #68746c;
         }
 
+        .berhasil {
+            color: #285943;
+            margin-top: 10px;
+        }
+
         @media (max-width: 700px) {
 
             .admin-container {
@@ -206,9 +211,7 @@
 
 <div class="admin-container">
 
-    <!-- =========================
-         LOGIN ADMIN
-    ========================= -->
+    <!-- LOGIN -->
 
     <div class="admin-login" id="loginPanel">
 
@@ -235,9 +238,7 @@
     </div>
 
 
-    <!-- =========================
-         PANEL ADMIN
-    ========================= -->
+    <!-- PANEL ADMIN -->
 
     <div id="adminPanel">
 
@@ -277,16 +278,12 @@ const scriptURL =
 "https://script.google.com/macros/s/AKfycbxiq1dDf6KO71Wd3Xkz7rLrbxWhGJKs2JKeNhDeoypfVYrsnjF-ZkfGJGIj-4CIRyEi/exec";
 
 
-/* =========================
-   PASSWORD ADMIN
-========================= */
+/* PASSWORD ADMIN */
 
 const PASSWORD_ADMIN = "admin123";
 
 
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 function loginAdmin() {
 
@@ -308,17 +305,14 @@ function loginAdmin() {
 
     } else {
 
-        error.textContent =
-            "Password salah.";
+        error.textContent = "Password salah.";
 
     }
 
 }
 
 
-/* =========================
-   LOGOUT
-========================= */
+/* LOGOUT */
 
 function logoutAdmin() {
 
@@ -331,9 +325,7 @@ function logoutAdmin() {
 }
 
 
-/* =========================
-   LOAD DATA
-========================= */
+/* LOAD DATA */
 
 function loadAduan() {
 
@@ -415,7 +407,6 @@ function loadAduan() {
 
                     </div>
 
-
                     <label>
                         <strong>Status</strong>
                     </label>
@@ -439,7 +430,6 @@ function loadAduan() {
 
                     </select>
 
-
                     <label>
                         <strong>Tanggapan Admin</strong>
                     </label>
@@ -449,12 +439,16 @@ function loadAduan() {
                         placeholder="Tulis tanggapan admin..."
                     >${aduan.tanggapan || ""}</textarea>
 
-
                     <button
                         class="simpan-btn"
-                        onclick="simpanAduan(${index})">
+                        onclick="simpanAduan(${aduan.row}, ${index})">
                         Simpan Tanggapan
                     </button>
+
+                    <p
+                        id="hasil-${index}"
+                        class="berhasil">
+                    </p>
 
                 `;
 
@@ -479,11 +473,9 @@ function loadAduan() {
 }
 
 
-/* =========================
-   SIMPAN TANGGAPAN
-========================= */
+/* SIMPAN STATUS DAN TANGGAPAN */
 
-function simpanAduan(index) {
+function simpanAduan(row, index) {
 
     const status =
         document.getElementById(
@@ -495,12 +487,93 @@ function simpanAduan(index) {
             "tanggapan-" + index
         ).value;
 
+    const hasil =
+        document.getElementById(
+            "hasil-" + index
+        );
 
-    alert(
-        "Status: " + status +
-        "\nTanggapan: " + tanggapan +
-        "\n\nFitur penyimpanan akan dihubungkan ke Google Script."
-    );
+
+    hasil.textContent = "Menyimpan...";
+
+
+    const iframe =
+        document.createElement("iframe");
+
+    iframe.name = "updateFrame";
+
+    iframe.style.display = "none";
+
+    document.body.appendChild(iframe);
+
+
+    const form =
+        document.createElement("form");
+
+    form.method = "POST";
+
+    form.action = scriptURL;
+
+    form.target = "updateFrame";
+
+
+    const actionInput =
+        document.createElement("input");
+
+    actionInput.name = "action";
+
+    actionInput.value = "updateAduan";
+
+
+    const rowInput =
+        document.createElement("input");
+
+    rowInput.name = "row";
+
+    rowInput.value = row;
+
+
+    const statusInput =
+        document.createElement("input");
+
+    statusInput.name = "status";
+
+    statusInput.value = status;
+
+
+    const tanggapanInput =
+        document.createElement("input");
+
+    tanggapanInput.name = "tanggapan";
+
+    tanggapanInput.value = tanggapan;
+
+
+    form.appendChild(actionInput);
+
+    form.appendChild(rowInput);
+
+    form.appendChild(statusInput);
+
+    form.appendChild(tanggapanInput);
+
+
+    document.body.appendChild(form);
+
+    form.submit();
+
+
+    hasil.textContent =
+        "Tanggapan berhasil disimpan ✓";
+
+
+    form.remove();
+
+
+    setTimeout(() => {
+
+        iframe.remove();
+
+    }, 3000);
 
 }
 
@@ -508,4 +581,4 @@ function simpanAduan(index) {
 
 </body>
 
-  </html>
+</html>
