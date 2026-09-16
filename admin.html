@@ -337,7 +337,7 @@ function loadAduan() {
         </div>
     `;
 
-    fetch(scriptURL + "?action=getAduan")
+    fetch(scriptURLCek + "?action=getAduan")
         .then(response => response.json())
         .then(data => {
 
@@ -510,7 +510,7 @@ function simpanAduan(row, index) {
 
     form.method = "POST";
 
-    form.action = scriptURL;
+    form.action = scriptURLCek;
 
     form.target = "updateFrame";
 
