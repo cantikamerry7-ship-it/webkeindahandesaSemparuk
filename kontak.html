@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kontak Desa Semparuk</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Harmoni Desa</div>
+
+    <div class="menu-toggle">☰</div>
+
+    <nav class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="alam.html">Alam</a>
+      <a href="budaya.html">Budaya</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="lokasi.html">Lokasi</a>
+      <a href="kontak.html" class="active">Kontak</a>
+    </nav>
+  </header>
+
+
+  <!-- HEADER -->
+  <section class="page-header">
+    <p class="small-title">HUBUNGI KAMI</p>
+
+    <h1>Kontak Desa Semparuk</h1>
+
+    <p>
+      Sampaikan pertanyaan, saran, dan pengaduan masyarakat.
+    </p>
+  </section>
+
+
+  <!-- INFORMASI KONTAK -->
+  <section class="section">
+
+    <div class="location-info">
+
+      <div class="location-card">
+        <div class="location-icon">📍</div>
+
+        <h3>Alamat</h3>
+
+        <p>
+          Kecamatan Semparuk,<br>
+          Kabupaten Sambas,<br>
+          Kalimantan Barat.
+        </p>
+      </div>
+
+
+      <div class="location-card">
+        <div class="location-icon">💬</div>
+
+        <h3>Layanan Aspirasi</h3>
+
+        <p>
+          Sampaikan aspirasi dan
+          pengaduan melalui formulir.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FORM ADUAN -->
+  <section class="section">
+
+    <div class="location-heading">
+      <p class="small-title">RUANG ASPIRASI</p>
+
+      <h2>Pengajuan Aduan</h2>
+    </div>
+
+
+    <form
+      action="https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec"
+      method="POST"
+      target="hiddenFrame"
+      onsubmit="berhasilKirim()">
+
+      <input type="hidden" name="action" value="kirimAduan">
+
+      <input
+        type="text"
+        name="nama"
+        placeholder="Nama lengkap"
+        required>
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        required>
+
+      <input
+        type="text"
+        name="kontak"
+        placeholder="Nomor kontak"
+        required>
+
+      <select name="jenis" required>
+        <option value="">Pilih jenis aduan</option>
+        <option value="Saran">Saran</option>
+        <option value="Pengaduan">Pengaduan</option>
+        <option value="Pertanyaan">Pertanyaan</option>
+      </select>
+
+      <textarea
+        name="pesan"
+        placeholder="Tuliskan pesan atau aduan"
+        rows="5"
+        required></textarea>
+
+      <button type="submit">Kirim Aduan</button>
+
+    </form>
+
+    <iframe name="hiddenFrame" style="display:none;"></iframe>
+
+    <p id="pesanBerhasil"></p>
+
+  </section>
+
+
+  <!-- CEK ADUAN -->
+  <section class="section">
+
+    <div class="location-heading">
+      <p class="small-title">STATUS ADUAN</p>
+
+      <h2>Cek Aduan</h2>
+    </div>
+
+    <input
+      type="email"
+      id="emailCek"
+      placeholder="Masukkan email"
+      required>
+
+    <button onclick="cekAduan()">Cek Status</button>
+
+    <div id="hasilCek"></div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 Harmoni Desa Semparuk</p>
+  </footer>
+
+
+  <script>
+
+    const scriptURLCek =
+    "https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec";
+
+
+    function berhasilKirim() {
+
+      setTimeout(function() {
+        document.getElementById("pesanBerhasil").innerText =
+        "Aduan berhasil dikirim ✓";
+      }, 1000);
+
+    }
+
+
+    function cekAduan() {
+
+      const email =
+      document.getElementById("emailCek").value;
+
+      if (!email) {
+        alert("Masukkan email terlebih dahulu.");
+        return;
+      }
+
+      fetch(scriptURLCek + "?action=cekAduan&email=" + encodeURIComponent(email))
+
+      .then(response => response.json())
+
+      .then(data => {
+
+        if (data.status === "tidak_ditemukan") {
+
+          document.getElementById("hasilCek").innerHTML =
+          "<p>Aduan tidak ditemukan.</p>";
+
+        } else {
+
+          document.getElementById("hasilCek").innerHTML =
+          "<p><b>Nama:</b> " + data.nama +
+          "</p><p><b>Jenis:</b> " + data.jenis +
+          "</p><p><b>Status:</b> " + data.status +
+          "</p><p><b>Tanggapan:</b> " + data.tanggapan +
+          "</p>";
+
+        }
+
+      })
+
+      .catch(error => {
+
+        document.getElementById("hasilCek").innerText =
+        "Terjadi kesalahan. Coba lagi.";
+
+      });
+
+    }
+
+  </script>
+
+
+  <script src="script.js"></script>
+
+</body>
+        </html>
