@@ -7,6 +7,220 @@
   <title>Kontak | Harmoni Desa</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* KONTAK PAGE */
+
+    .contact-wrapper {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .contact-intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .contact-intro h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #285943;
+    }
+
+    .contact-intro p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .contact-card,
+    .form-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(40, 89, 67, 0.08);
+      border: 1px solid #e9eee9;
+    }
+
+    .contact-card h3,
+    .form-card h3 {
+      color: #285943;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .contact-card > p,
+    .form-card > p {
+      color: #777;
+      line-height: 1.7;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .contact-detail {
+      padding: 17px 0;
+      border-bottom: 1px solid #edf0ed;
+    }
+
+    .contact-detail:last-child {
+      border-bottom: none;
+    }
+
+    .contact-detail span {
+      display: block;
+      font-size: 12px;
+      color: #7d927f;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .contact-detail strong {
+      color: #333;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .form-card form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border: 1px solid #dfe7df;
+      border-radius: 10px;
+      background: #fbfcfa;
+      color: #333;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form-card input:focus,
+    .form-card select:focus,
+    .form-card textarea:focus {
+      border-color: #285943;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(40, 89, 67, 0.08);
+    }
+
+    .form-card textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .form-card button {
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      background: #285943;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form-card button:hover {
+      background: #1d4231;
+      transform: translateY(-2px);
+    }
+
+    .success-message {
+      color: #285943;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    .check-card {
+      max-width: 700px;
+      margin: 35px auto 0;
+      padding: 30px;
+      background: #f5f7f2;
+      border-radius: 18px;
+      border: 1px solid #e2e9df;
+    }
+
+    .check-card h3 {
+      color: #285943;
+      margin-bottom: 10px;
+    }
+
+    .check-card p {
+      color: #777;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .check-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .check-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid #d5dfd4;
+      border-radius: 9px;
+      outline: none;
+    }
+
+    .check-form button {
+      padding: 13px 20px;
+      border: none;
+      border-radius: 9px;
+      background: #285943;
+      color: white;
+      cursor: pointer;
+    }
+
+    #hasilCek {
+      margin-top: 20px;
+      line-height: 1.8;
+      color: #555;
+      font-size: 14px;
+    }
+
+    @media (max-width: 750px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-intro h2 {
+        font-size: 26px;
+      }
+
+      .contact-card,
+      .form-card,
+      .check-card {
+        padding: 24px;
+      }
+
+      .check-form {
+        flex-direction: column;
+      }
+
+      .check-form button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -32,172 +246,174 @@
 
   <!-- HEADER -->
   <section class="page-header">
-    <p class="small-title">HUBUNGI KAMI</p>
+    <p class="small-title">LAYANAN MASYARAKAT</p>
 
-    <h1>Kontak Desa Semparuk</h1>
+    <h1>Hubungi Kami</h1>
 
     <p>
-      Sampaikan saran, pertanyaan, dan aspirasi
-      untuk kemajuan Desa Semparuk.
+      Sampaikan aspirasi dan masukan untuk
+      mendukung kemajuan Desa Semparuk.
     </p>
   </section>
 
 
-  <!-- INFORMASI KONTAK -->
-  <section class="section">
+  <main class="contact-wrapper">
 
-    <div class="location-heading">
-      <p class="small-title">INFORMASI</p>
-
-      <h2>Hubungi Kami</h2>
-    </div>
-
-    <div class="location-info">
-
-      <div class="location-card">
-        <div class="location-icon">📍</div>
-
-        <h3>Alamat</h3>
-
-        <p>
-          Kecamatan Semparuk,<br>
-          Kabupaten Sambas,<br>
-          Kalimantan Barat.
-        </p>
-      </div>
-
-
-      <div class="location-card">
-        <div class="location-icon">💬</div>
-
-        <h3>Layanan Masyarakat</h3>
-
-        <p>
-          Sampaikan pendapat dan
-          aspirasi melalui formulir.
-        </p>
-      </div>
-
-
-      <div class="location-card">
-        <div class="location-icon">🤝</div>
-
-        <h3>Komunikasi</h3>
-
-        <p>
-          Bersama membangun desa
-          yang lebih baik.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FORM PENGADUAN -->
-  <section class="section">
-
-    <div class="location-heading">
-      <p class="small-title">RUANG ASPIRASI</p>
-
-      <h2>Pengajuan Aduan</h2>
+    <div class="contact-intro">
+      <h2>Mari Terhubung</h2>
 
       <p>
-        Isi formulir berikut dengan data yang benar.
+        Kami menyediakan ruang bagi masyarakat
+        untuk menyampaikan saran, pertanyaan,
+        dan pengaduan secara mudah.
       </p>
     </div>
 
 
-    <form
-      action="https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec"
-      method="POST"
-      target="hiddenFrame"
-      onsubmit="berhasilKirim()">
+    <!-- INFORMASI DAN FORM -->
+    <div class="contact-grid">
 
-      <input
-        type="hidden"
-        name="action"
-        value="kirimAduan">
+      <div class="contact-card">
 
-      <input
-        type="text"
-        name="nama"
-        placeholder="Nama lengkap"
-        required>
+        <h3>Informasi Kontak</h3>
 
-      <input
-        type="email"
-        name="email"
-        placeholder="Alamat email"
-        required>
+        <p>
+          Temukan informasi mengenai wilayah
+          dan layanan masyarakat Desa Semparuk.
+        </p>
 
-      <input
-        type="text"
-        name="kontak"
-        placeholder="Nomor kontak"
-        required>
+        <div class="contact-detail">
+          <span>Alamat</span>
 
-      <select name="jenis" required>
-        <option value="">Pilih jenis aduan</option>
-        <option value="Saran">Saran</option>
-        <option value="Pengaduan">Pengaduan</option>
-        <option value="Pertanyaan">Pertanyaan</option>
-      </select>
+          <strong>
+            Kecamatan Semparuk,<br>
+            Kabupaten Sambas,<br>
+            Kalimantan Barat.
+          </strong>
+        </div>
 
-      <textarea
-        name="pesan"
-        rows="5"
-        placeholder="Tuliskan pesan atau aduan kamu..."
-        required></textarea>
+        <div class="contact-detail">
+          <span>Layanan</span>
 
-      <button type="submit">
-        Kirim Aduan
-      </button>
+          <strong>
+            Aspirasi dan Pengaduan Masyarakat
+          </strong>
+        </div>
 
-    </form>
+        <div class="contact-detail">
+          <span>Tujuan</span>
+
+          <strong>
+            Membangun komunikasi yang baik
+            bersama masyarakat.
+          </strong>
+        </div>
+
+      </div>
 
 
-    <iframe
-      name="hiddenFrame"
-      style="display:none;">
-    </iframe>
+      <!-- FORM ADUAN -->
+      <div class="form-card">
 
-    <p id="pesanBerhasil"></p>
+        <h3>Pengajuan Aduan</h3>
 
-  </section>
+        <p>
+          Isi formulir dengan lengkap dan
+          gunakan informasi yang benar.
+        </p>
+
+        <form
+          action="https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec"
+          method="POST"
+          target="hiddenFrame"
+          onsubmit="berhasilKirim()">
+
+          <input
+            type="hidden"
+            name="action"
+            value="kirimAduan">
+
+          <input
+            type="text"
+            name="nama"
+            placeholder="Nama lengkap"
+            required>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Alamat email"
+            required>
+
+          <input
+            type="text"
+            name="kontak"
+            placeholder="Nomor kontak"
+            required>
+
+          <select name="jenis" required>
+            <option value="">Pilih jenis aduan</option>
+            <option value="Saran">Saran</option>
+            <option value="Pengaduan">Pengaduan</option>
+            <option value="Pertanyaan">Pertanyaan</option>
+          </select>
+
+          <textarea
+            name="pesan"
+            placeholder="Tuliskan pesan atau aduan..."
+            required></textarea>
+
+          <button type="submit">
+            Kirim Pengajuan
+          </button>
+
+        </form>
+
+        <iframe
+          name="hiddenFrame"
+          style="display:none;">
+        </iframe>
+
+        <p
+          id="pesanBerhasil"
+          class="success-message">
+        </p>
+
+      </div>
+
+    </div>
 
 
-  <!-- CEK ADUAN -->
-  <section class="section">
+    <!-- CEK ADUAN -->
+    <div class="check-card">
 
-    <div class="location-heading">
-      <p class="small-title">STATUS PENGAJUAN</p>
-
-      <h2>Cek Aduan</h2>
+      <h3>Periksa Status Pengajuan</h3>
 
       <p>
-        Masukkan email untuk melihat status
+        Masukkan email yang digunakan saat
+        mengirim aduan untuk melihat status
         dan tanggapan admin.
       </p>
+
+      <div class="check-form">
+
+        <input
+          type="email"
+          id="emailCek"
+          placeholder="Masukkan email"
+          required>
+
+        <button onclick="cekAduan()">
+          Periksa
+        </button>
+
+      </div>
+
+      <div id="hasilCek"></div>
+
     </div>
 
-
-    <input
-      type="email"
-      id="emailCek"
-      placeholder="Masukkan email"
-      required>
-
-
-    <button onclick="cekAduan()">
-      Cek Status Aduan
-    </button>
-
-
-    <div id="hasilCek"></div>
-
-  </section>
+  </main>
 
 
   <!-- FOOTER -->
@@ -218,7 +434,7 @@
       setTimeout(function() {
 
         document.getElementById("pesanBerhasil").innerText =
-        "Aduan berhasil dikirim ✓";
+        "Pengajuan berhasil dikirim.";
 
       }, 1000);
 
@@ -230,7 +446,6 @@
       const email =
       document.getElementById("emailCek").value.trim();
 
-
       if (!email) {
 
         alert("Masukkan email terlebih dahulu.");
@@ -238,6 +453,9 @@
         return;
 
       }
+
+      document.getElementById("hasilCek").innerText =
+      "Sedang memeriksa data...";
 
 
       fetch(
@@ -253,7 +471,7 @@
         if (data.status === "tidak_ditemukan") {
 
           document.getElementById("hasilCek").innerHTML =
-          "<p>Aduan tidak ditemukan.</p>";
+          "<p>Data pengajuan tidak ditemukan.</p>";
 
         } else {
 
