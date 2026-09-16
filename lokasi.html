@@ -1,886 +1,128 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <title>Lokasi Desa Semparuk</title>
 
-    <title>Harmoni Desa | Lokasi</title>
-
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">Harmoni Desa</div>
 
-<header>
+    <div class="menu-toggle">☰</div>
 
-    <nav class="navbar">
-
-        <a href="index.html" class="logo">
-            🌿 Harmoni Desa
-        </a>
-
-        <button class="menu-toggle">
-            ☰
-        </button>
-
-        <ul class="nav-links">
-
-            <li>
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="tentang.html">
-                    Tentang Desa
-                </a>
-            </li>
-
-            <li>
-                <a href="alam.html">
-                    Keindahan Alam
-                </a>
-            </li>
-
-            <li>
-                <a href="budaya.html">
-                    Budaya
-                </a>
-            </li>
-
-            <li>
-                <a href="galeri.html">
-                    Galeri
-                </a>
-            </li>
-
-<li>
-    <a href="lokasi.html">
-        Lokasi
-    </a>
-</li>
-            
-        </ul>
-
+    <nav class="nav-links">
+      <a href="index.html">Beranda</a>
+      <a href="tentang.html">Tentang</a>
+      <a href="alam.html">Alam</a>
+      <a href="budaya.html">Budaya</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="lokasi.html" class="active">Lokasi</a>
+      <a href="kontak.html">Kontak</a>
     </nav>
+  </header>
 
-</header>
 
+  <!-- HEADER HALAMAN -->
+  <section class="page-header">
+    <p class="small-title">TEMUKAN KAMI</p>
 
-<!-- =========================
-     MAIN
-========================= -->
-
-<main>
-
-    <!-- HEADER HALAMAN -->
-
-    <section class="page-header">
-
-        <span>
-            LOKASI DESA
-        </span>
-
-        <h1>
-            Temukan Lokasi Desa Semparuk
-        </h1>
-
-        <p>
-            Mengenal lokasi Desa Semparuk
-            yang berada di Kecamatan Semparuk,
-            Kabupaten Sambas, Kalimantan Barat.
-        </p>
-
-    </section>
-
-
-    <!-- =========================
-         INFORMASI LOKASI
-    ========================= -->
-
-    <section class="section">
-
-        <div class="location-info">
-
-            <div class="location-card">
-
-                <div class="location-icon">
-                    📍Kartu Lokasi
-                </div>
-
-                <h3>
-                    Desa Semparuk
-                </h3>
-
-                <p>
-                    Kecamatan Semparuk
-                </p>
-
-            </div>
-
-
-            <div class="location-card">
-
-                <div class="location-icon">
-                    🏡 
-                </div>
-
-                <h3>
-                    Kabupaten Sambas
-                </h3>
-
-                <p>
-                    Kalimantan Barat
-                </p>
-
-            </div>
-
-
-            <div class="location-card">
-
-                <div class="location-icon">
-                    🗺️
-                </div>
-
-                <h3>
-                    Lokasi di Peta 
-                </h3>
-
-                <p>
-                    Temukan lokasi desa melalui peta digital.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PETA LOKASI
-    ========================= -->
-
-    <section class="section location-section">
-
-        <div class="location-heading">
-
-            <span class="small-title">
-                PETA LOKASI
-            </span>
-
-            <h2>
-                Di Mana Desa Semparuk?
-            </h2>
-
-            <p>
-                Lihat lokasi Desa Semparuk dan temukan arahnya melalui Google Maps.
-            </p>
-
-        </div>
-
-
-        <div class="map-container">
-
-            <iframe
-                src="https://www.google.com/maps?q=Desa%20Semparuk,%20Kecamatan%20Semparuk,%20Kabupaten%20Sambas,%20Kalimantan%20Barat&output=embed"
-                width="100%"
-                height="450"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-        </div>
-
-
-        <div class="map-button">
-
-            <a
-                href="https://maps.app.goo.gl/g4bXG451keVnwbhHA?g_st=ac"
-                target="_blank"
-                class="next-btn">
-                Buka Google Maps →
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- =========================
-     RUANG ASPIRASI
-========================= -->
-
-<section class="section buku-tamu">
-
-    <div class="location-heading">
-
-        <span class="small-title">
-        <span class="small-title">
-    ADUAN MASYARAKAT
-</span>
-
-<h2>
-    Sampaikan Aduan Anda
-</h2>
-
-<p>
-    Sampaikan aduan, kritik, dan saran untuk membantu kemajuan Desa Semparuk.
-</p>
-    </div>
-
-    <form id="bukuTamuForm">
-
-        <input
-            type="text"
-            id="nama"
-            placeholder="Nama"
-            required
-        >
-
-        <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            required
-        >
-
-        <input
-    type="text"
-    id="kontak"
-    placeholder="No. Kontak / WhatsApp"
-    required
->
-
-<select id="jenis" required>
-    <option value="">Pilih Jenis Aduan</option>
-    <option value="Fasilitas Desa">Fasilitas Desa</option>
-    <option value="Pelayanan Masyarakat">Pelayanan Masyarakat</option>
-    <option value="Lingkungan">Lingkungan</option>
-    <option value="Kegiatan Desa">Kegiatan Desa</option>
-    <option value="Lainnya">Lainnya</option>
-</select>
-
-        <textarea
-            id="pesan"
-            placeholder="Pesan / Aspirasi"
-            rows="5"
-            required
-        ></textarea>
-
-        <button
-            type="submit"
-            class="next-btn"
-        >
-            Kirim Aduan →
-        </button>
-
-        <p id="statusPesan"></p>
-
-    </form>
-
-</section>
-
-<!-- CEK ADUAN -->
-<section class="section cek-aduan">
-    <div class="location-heading">
-        <span class="small-title">CEK ADUAN</span>
-        <h2>Lihat Status Aduan</h2>
-        <p>Masukkan Email untuk melihat status dan tanggapan admin.</p>
-    </div>
-
-    <div class="cek-aduan-box">
-        <input 
-    type="email" 
-    id="emailCek" 
-    placeholder="Masukkan Email"
->
-
-        <button 
-            type="button" 
-            class="next-btn" 
-            onclick="cekAduan()"
-        >
-            Cek Aduan →
-        </button>
-
-        <div id="hasilCekAduan"></div>
-    </div>
-</section>
-
-<script>
-
-
-const scriptURLCek =
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Harmoni Desa | Lokasi</title>
-
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!-- =========================
-     NAVBAR
-========================= -->
-
-<header>
-
-    <nav class="navbar">
-
-        <a href="index.html" class="logo">
-            🌿 Harmoni Desa
-        </a>
-
-        <button class="menu-toggle">
-            ☰
-        </button>
-
-        <ul class="nav-links">
-
-            <li>
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
-
-            <li>
-                <a href="tentang.html">
-                    Tentang Desa
-                </a>
-            </li>
-
-            <li>
-                <a href="alam.html">
-                    Keindahan Alam
-                </a>
-            </li>
-
-            <li>
-                <a href="budaya.html">
-                    Budaya
-                </a>
-            </li>
-
-            <li>
-                <a href="galeri.html">
-                    Galeri
-                </a>
-            </li>
-
-<li>
-    <a href="lokasi.html">
-        Lokasi
-    </a>
-</li>
-            
-        </ul>
-
-    </nav>
-
-</header>
-
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main>
-
-    <!-- HEADER HALAMAN -->
-
-    <section class="page-header">
-
-        <span>
-            LOKASI DESA
-        </span>
-
-        <h1>
-            Temukan Lokasi Desa Semparuk
-        </h1>
-
-        <p>
-            Mengenal lokasi Desa Semparuk
-            yang berada di Kecamatan Semparuk,
-            Kabupaten Sambas, Kalimantan Barat.
-        </p>
-
-    </section>
-
-
-    <!-- =========================
-         INFORMASI LOKASI
-    ========================= -->
-
-    <section class="section">
-
-        <div class="location-info">
-
-            <div class="location-card">
-
-                <div class="location-icon">
-                    📍Kartu Lokasi
-                </div>
-
-                <h3>
-                    Desa Semparuk
-                </h3>
-
-                <p>
-                    Kecamatan Semparuk
-                </p>
-
-            </div>
-
-
-            <div class="location-card">
-
-                <div class="location-icon">
-                    🏡 
-                </div>
-
-                <h3>
-                    Kabupaten Sambas
-                </h3>
-
-                <p>
-                    Kalimantan Barat
-                </p>
-
-            </div>
-
-
-            <div class="location-card">
-
-                <div class="location-icon">
-                    🗺️
-                </div>
-
-                <h3>
-                    Lokasi di Peta 
-                </h3>
-
-                <p>
-                    Temukan lokasi desa melalui peta digital.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         PETA LOKASI
-    ========================= -->
-
-    <section class="section location-section">
-
-        <div class="location-heading">
-
-            <span class="small-title">
-                PETA LOKASI
-            </span>
-
-            <h2>
-                Di Mana Desa Semparuk?
-            </h2>
-
-            <p>
-                Lihat lokasi Desa Semparuk dan temukan arahnya melalui Google Maps.
-            </p>
-
-        </div>
-
-
-        <div class="map-container">
-
-            <iframe
-                src="https://www.google.com/maps?q=Desa%20Semparuk,%20Kecamatan%20Semparuk,%20Kabupaten%20Sambas,%20Kalimantan%20Barat&output=embed"
-                width="100%"
-                height="450"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-        </div>
-
-
-        <div class="map-button">
-
-            <a
-                href="https://maps.app.goo.gl/g4bXG451keVnwbhHA?g_st=ac"
-                target="_blank"
-                class="next-btn">
-                Buka Google Maps →
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- =========================
-     RUANG ASPIRASI
-========================= -->
-
-<section class="section buku-tamu">
-
-    <div class="location-heading">
-
-        <span class="small-title">
-        <span class="small-title">
-    ADUAN MASYARAKAT
-</span>
-
-<h2>
-    Sampaikan Aduan Anda
-</h2>
-
-<p>
-    Sampaikan aduan, kritik, dan saran untuk membantu kemajuan Desa Semparuk.
-</p>
-    </div>
-
-    <form id="bukuTamuForm">
-
-        <input
-            type="text"
-            id="nama"
-            placeholder="Nama"
-            required
-        >
-
-        <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            required
-        >
-
-        <input
-    type="text"
-    id="kontak"
-    placeholder="No. Kontak / WhatsApp"
-    required
->
-
-<select id="jenis" required>
-    <option value="">Pilih Jenis Aduan</option>
-    <option value="Fasilitas Desa">Fasilitas Desa</option>
-    <option value="Pelayanan Masyarakat">Pelayanan Masyarakat</option>
-    <option value="Lingkungan">Lingkungan</option>
-    <option value="Kegiatan Desa">Kegiatan Desa</option>
-    <option value="Lainnya">Lainnya</option>
-</select>
-
-        <textarea
-            id="pesan"
-            placeholder="Pesan / Aspirasi"
-            rows="5"
-            required
-        ></textarea>
-
-        <button
-            type="submit"
-            class="next-btn"
-        >
-            Kirim Aduan →
-        </button>
-
-        <p id="statusPesan"></p>
-
-    </form>
-
-</section>
-
-<!-- CEK ADUAN -->
-<section class="section cek-aduan">
-    <div class="location-heading">
-        <span class="small-title">CEK ADUAN</span>
-        <h2>Lihat Status Aduan</h2>
-        <p>Masukkan Kode Aduan untuk melihat status dan tanggapan admin.</p>
-    </div>
-
-    <div class="cek-aduan-box">
-        <input 
-            type="text" 
-            id="kodeCek" 
-            placeholder="Masukkan Kode Aduan"
-        >
-
-        <button 
-            type="button" 
-            class="next-btn" 
-            onclick="cekAduan()"
-        >
-            Cek Aduan →
-        </button>
-
-        <div id="hasilCekAduan"></div>
-    </div>
-</section>
-
-<script>
-
-
-const scriptURLCek =
-"https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec";
-function cekAduan() {
-
-    const email =
-        document.getElementById("emailCek").value.trim();
-
-    const hasil =
-        document.getElementById("hasilCekAduan");
-
-    if (email === "") {
-        hasil.innerHTML =
-        "<p>Silakan masukkan email.</p>";
-        return;
-    }
-
-    hasil.innerHTML =
-    "<p>Mencari aduan...</p>";
-
-    fetch(
-        scriptURLCek +
-        "?action=cekAduan&email=" +
-        encodeURIComponent(email)
-    )
-
-    .then(response => response.json())
-
-    .then(data => {
-
-        if (data.status === "tidak_ditemukan") {
-
-            hasil.innerHTML =
-            "<p>Aduan dengan email tersebut tidak ditemukan.</p>";
-
-            return;
-        }
-
-        hasil.innerHTML = `
-
-            <div class="hasil-aduan">
-
-                <p>
-                    <strong>Nama:</strong><br>
-                    ${data.nama}
-                </p>
-
-                <p>
-
-
-function cekAduan() {
-
-    const email =
-        document.getElementById("emailCek").value.trim();
-
-    const hasil =
-        document.getElementById("hasilCekAduan");
-
-    if (email === "") {
-        hasil.innerHTML =
-        "<p>Silakan masukkan email.</p>";
-        return;
-    }
-
-    hasil.innerHTML =
-    "<p>Mencari aduan...</p>";
-
-    fetch(
-        scriptURLCek +
-        "?action=cekAduan&email=" +
-        encodeURIComponent(email)
-    )
-<script>
-const scriptURLCek =
-"https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec";
-
-function cekAduan() {
-    const email = document.getElementById("emailCek").value.trim();
-    const hasil = document.getElementById("hasilCekAduan");
-
-    if (email === "") {
-        hasil.textContent = "Silakan masukkan email.";
-        return;
-    }
-
-    hasil.textContent = "Mencari aduan...";
-
-    fetch(scriptURLCek + "?action=cekAduan&email=" + encodeURIComponent(email))
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "tidak_ditemukan") {
-                hasil.textContent = "Aduan tidak ditemukan.";
-                return;
-            }
-
-            hasil.innerHTML = `
-                <p><strong>Nama:</strong> ${data.nama}</p>
-                <p><strong>Jenis:</strong> ${data.jenis}</p>
-                <p><strong>Status:</strong> ${data.status}</p>
-                <p><strong>Tanggapan:</strong> ${data.tanggapan || "Belum ada tanggapan."}</p>
-            `;
-        })
-        .catch(error => {
-            hasil.textContent = "Terjadi kesalahan.";
-        });
-}
-</script>
-    <!-- =========================
-         PENUTUP
-    ========================= -->
-
-    <section class="community">
-
-        <div class="community-content">
-
-            <span>
-                DESA SEMPARUK
-            </span>
-
-            <h2>
-                Mengenal Semparuk Lebih Dekat
-            </h2>
-
-            <p>
-                Dari lokasi hingga kehidupan masyarakatnya, 
-                setiap sudut Desa Semparuk memiliki cerita.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         KEMBALI KE GALERI
-    ========================= -->
-
-    <div class="next-page">
-
-        <div>
-
-            <span>
-                SEBELUMNYA
-            </span>
-
-            <h3>
-                Kembali ke Galeri Desa
-            </h3>
-
-        </div>
-
-        <a href="galeri.html" class="next-btn">
-            ← Lihat Galeri
-        </a>
-
-    </div>
-
-
-</main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
+    <h1>Lokasi Desa Semparuk</h1>
 
     <p>
-        🌿 Harmoni Desa — Mengenal Semparuk Lebih Dekat
+      Temukan lokasi Desa Semparuk melalui peta di bawah ini.
     </p>
-
-</footer>
-
-<script>
-const scriptURL = "https://script.google.com/macros/s/AKfycby6R8hSrWQIG-zvNHf6bNC_Pg7Ynn0dI-BhwS8YCvU1ad6FQz3eRJIpQOeZI8LdLc9-OQ/exec";
-
-document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const nama = document.getElementById("nama").value;
-    const email = document.getElementById("email").value;
-    const kontak = document.getElementById("kontak").value;
-    const jenis = document.getElementById("jenis").value;
-    const pesan = document.getElementById("pesan").value;
-    const status = document.getElementById("statusPesan");
-
-    
-
-    status.textContent = "Mengirim...";
-
-    const iframe = document.createElement("iframe");
-    iframe.name = "hiddenFrame";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-
-    const formKirim = document.createElement("form");
-    formKirim.method = "POST";
-    formKirim.action = scriptURL;
-    formKirim.target = "hiddenFrame";
-
-    const data = {
-        nama: nama,
-        email: email,
-        kontak: kontak,
-        jenis: jenis,
-        pesan: pesan,
-        
-    };
-
-    Object.keys(data).forEach(function(key) {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = data[key];
-        formKirim.appendChild(input);
-    });
-
-    document.body.appendChild(formKirim);
-    formKirim.submit();
-
-    status.textContent = "Aduan berhasil dikirim 🌿";
+  </section>
 
 
-    document.getElementById("bukuTamuForm").reset();
+  <!-- INFORMASI LOKASI -->
+  <section class="section location-section">
 
-    formKirim.remove();
+    <div class="location-info">
 
-    setTimeout(function() {
-        iframe.remove();
-    }, 3000);
-});
-</script>
+      <div class="location-card">
+        <div class="location-icon">📍</div>
 
-<script src="script.js"></script>
+        <h3>Alamat</h3>
+
+        <p>
+          Kecamatan Semparuk,<br>
+          Kabupaten Sambas,<br>
+          Kalimantan Barat.
+        </p>
+      </div>
+
+
+      <div class="location-card">
+        <div class="location-icon">🗺️</div>
+
+        <h3>Petunjuk Lokasi</h3>
+
+        <p>
+          Gunakan Google Maps untuk
+          melihat lokasi Desa Semparuk.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GOOGLE MAPS -->
+  <section class="section">
+
+    <div class="location-heading">
+      <p class="small-title">PETA LOKASI</p>
+
+      <h2>Desa Semparuk</h2>
+    </div>
+
+
+    <div class="map-container">
+
+      <iframe
+        src="https://www.google.com/maps?q=Desa%20Semparuk%20Sambas&output=embed"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+
+    <div class="map-button">
+
+      <a
+        href="https://maps.app.goo.gl/bKEbpNQTK91weGcN9?g_st=ac"
+        target="_blank">
+
+        Buka Google Maps
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <p>© 2026 Harmoni Desa Semparuk</p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
