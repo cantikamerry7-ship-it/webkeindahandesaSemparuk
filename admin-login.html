@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin | Harmoni Desa</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            🌿 Harmoni Desa
+        </a>
+
+        <button class="menu-toggle">
+            ☰
+        </button>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="tentang.html">Tentang Desa</a>
+            </li>
+
+            <li>
+                <a href="alam.html">Keindahan Alam</a>
+            </li>
+
+            <li>
+                <a href="budaya.html">Budaya</a>
+            </li>
+
+            <li>
+                <a href="galeri.html">Galeri</a>
+            </li>
+
+            <li>
+                <a href="lokasi.html">Lokasi</a>
+            </li>
+
+            <li>
+                <a href="admin-login.html">🔐 Admin</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="page-header">
+
+        <span>AREA ADMIN</span>
+
+        <h1>Masuk Admin Desa</h1>
+
+        <p>
+            Masukkan kode admin untuk mengakses halaman pengelolaan aduan.
+        </p>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="buku-tamu">
+
+            <form id="adminLoginForm">
+
+                <input
+                    type="password"
+                    id="kodeAdmin"
+                    placeholder="Masukkan Kode Admin"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="next-btn">
+                    Masuk Admin →
+                </button>
+
+                <p id="loginStatus"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        🌿 Harmoni Desa — Mengenal Semparuk Lebih Dekat
+    </p>
+
+</footer>
+
+
+<script>
+
+document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const kode = document.getElementById("kodeAdmin").value;
+    const status = document.getElementById("loginStatus");
+
+    if (kode === "admin123") {
+
+        window.location.href = "admin.html";
+
+    } else {
+
+        status.textContent = "Kode Admin salah.";
+
+    }
+
+});
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+      </html>
