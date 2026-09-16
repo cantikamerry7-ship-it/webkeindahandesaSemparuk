@@ -369,7 +369,6 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
     const pesan = document.getElementById("pesan").value;
     const status = document.getElementById("statusPesan");
 
-    // Membuat kode aduan
     const kode = "ADU-" + Math.random().toString(36).substring(2, 8).toUpperCase();
 
     status.textContent = "Mengirim...";
@@ -423,56 +422,8 @@ document.getElementById("bukuTamuForm").addEventListener("submit", function(e) {
 </script>
 
 <script src="script.js"></script>
-
-    status.textContent = "Mengirim...";
-
-    const iframe = document.createElement("iframe");
-    iframe.name = "hiddenFrame";
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-
-    const formKirim = document.createElement("form");
-    formKirim.method = "POST";
-    formKirim.action = scriptURL;
-    formKirim.target = "hiddenFrame";
-
-    const data = {
-        nama: nama,
-        email: email,
-        kontak: kontak,
-        jenis: jenis,
-        pesan: pesan
-    };
-
-    Object.keys(data).forEach(function(key) {
-        const input = document.createElement("input");
-        input.name = key;
-        input.value = data[key];
-        formKirim.appendChild(input);
-    });
-
-    document.body.appendChild(formKirim);
-    formKirim.submit();
-
-    status.textContent = "Aduan berhasil dikirim 🌿";
-
-    document.getElementById("bukuTamuForm").reset();
-
-    formKirim.remove();
-
-    setTimeout(() => {
-        iframe.remove();
-    }, 3000);
-});
-</script>
-
-<script src="script.js"></script>
 </body>
-
 </html>
-
-
-
 
 
 
