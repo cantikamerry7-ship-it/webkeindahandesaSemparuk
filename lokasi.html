@@ -318,37 +318,58 @@
 </section>
 
 <script>
-const scriptURLCek = "https://script.google.com/macros/s/AKfycby6R8hSrWQIG-zvNHf6bNC_Pg7Ynn0dI-BhwS8YCvU1ad6FQz3eRJIpQOeZI8LdLc9-OQ/exec";
+
+
+const scriptURLCek =
+"https://script.google.com/macros/s/AKfycby6R8hSrWQIG-zvNHf6bNC_Pg7Ynn0dI-BhwS8YCvU1ad6FQz3eRJIpQOeZI8LdLc9-OQ/exec";
 
 function cekAduan() {
-    const kode = document.getElementById("kodeCek").value.trim();
-    const hasil = document.getElementById("hasilCekAduan");
 
-    if (kode === "") {
-        hasil.innerHTML = "<p>Silakan masukkan Kode Aduan.</p>";
+    const email =
+        document.getElementById("emailCek").value.trim();
+
+    const hasil =
+        document.getElementById("hasilCekAduan");
+
+    if (email === "") {
+        hasil.innerHTML =
+        "<p>Silakan masukkan email.</p>";
         return;
     }
 
-    hasil.innerHTML = "<p>Mencari aduan...</p>";
+    hasil.innerHTML =
+    "<p>Mencari aduan...</p>";
 
     fetch(
-        scriptURLCek + 
-        "?action=cekAduan&kode=" + 
-        encodeURIComponent(kode)
+        scriptURLCek +
+        "?action=cekAduan&email=" +
+        encodeURIComponent(email)
     )
+
     .then(response => response.json())
+
     .then(data => {
 
         if (data.status === "tidak_ditemukan") {
-            hasil.innerHTML = "<p>Kode Aduan tidak ditemukan.</p>";
+
+            hasil.innerHTML =
+            "<p>Aduan dengan email tersebut tidak ditemukan.</p>";
+
             return;
         }
 
         hasil.innerHTML = `
+
             <div class="hasil-aduan">
+
                 <p>
-                    <strong>Kode Aduan:</strong><br>
-                    ${data.kode}
+                    <strong>Nama:</strong><br>
+                    ${data.nama}
+                </p>
+
+                <p>
+                    <strong>Jenis Aduan:</strong><br>
+                    ${data.jenis}
                 </p>
 
                 <p>
@@ -360,16 +381,23 @@ function cekAduan() {
                     <strong>Tanggapan Admin:</strong><br>
                     ${data.tanggapan || "Belum ada tanggapan dari admin."}
                 </p>
+
             </div>
+
         `;
+
     })
+
     .catch(error => {
-        hasil.innerHTML = 
-            "<p>Terjadi kesalahan. Silakan coba lagi.</p>";
+
+        hasil.innerHTML =
+        "<p>Terjadi kesalahan. Silakan coba lagi.</p>";
+
     });
+
 }
-                        </script>
-    
+
+</script>
     <!-- =========================
          PENUTUP
     ========================= -->
