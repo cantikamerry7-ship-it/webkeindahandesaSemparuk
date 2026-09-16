@@ -290,6 +290,86 @@
 
 </section>
 
+<!-- CEK ADUAN -->
+<section class="section cek-aduan">
+    <div class="location-heading">
+        <span class="small-title">CEK ADUAN</span>
+        <h2>Lihat Status Aduan</h2>
+        <p>Masukkan Kode Aduan untuk melihat status dan tanggapan admin.</p>
+    </div>
+
+    <div class="cek-aduan-box">
+        <input 
+            type="text" 
+            id="kodeCek" 
+            placeholder="Masukkan Kode Aduan"
+        >
+
+        <button 
+            type="button" 
+            class="next-btn" 
+            onclick="cekAduan()"
+        >
+            Cek Aduan →
+        </button>
+
+        <div id="hasilCekAduan"></div>
+    </div>
+</section>
+
+<script>
+const scriptURLCek = "https://script.google.com/macros/s/AKfycby6R8hSrWQIG-zvNHf6bNC_Pg7Ynn0dI-BhwS8YCvU1ad6FQz3eRJIpQOeZI8LdLc9-OQ/exec";
+
+function cekAduan() {
+    const kode = document.getElementById("kodeCek").value.trim();
+    const hasil = document.getElementById("hasilCekAduan");
+
+    if (kode === "") {
+        hasil.innerHTML = "<p>Silakan masukkan Kode Aduan.</p>";
+        return;
+    }
+
+    hasil.innerHTML = "<p>Mencari aduan...</p>";
+
+    fetch(
+        scriptURLCek + 
+        "?action=cekAduan&kode=" + 
+        encodeURIComponent(kode)
+    )
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.status === "tidak_ditemukan") {
+            hasil.innerHTML = "<p>Kode Aduan tidak ditemukan.</p>";
+            return;
+        }
+
+        hasil.innerHTML = `
+            <div class="hasil-aduan">
+                <p>
+                    <strong>Kode Aduan:</strong><br>
+                    ${data.kode}
+                </p>
+
+                <p>
+                    <strong>Status:</strong><br>
+                    ${data.status}
+                </p>
+
+                <p>
+                    <strong>Tanggapan Admin:</strong><br>
+                    ${data.tanggapan || "Belum ada tanggapan dari admin."}
+                </p>
+            </div>
+        `;
+    })
+    .catch(error => {
+        hasil.innerHTML = 
+            "<p>Terjadi kesalahan. Silakan coba lagi.</p>";
+    });
+}
+                        </script>
+    
     <!-- =========================
          PENUTUP
     ========================= -->
