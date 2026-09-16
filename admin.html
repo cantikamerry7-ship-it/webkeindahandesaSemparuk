@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin | Harmoni Desa</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            background: #f7f5ed;
+        }
+
+        .admin-container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        .admin-login {
+            max-width: 450px;
+            margin: 100px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(35, 63, 47, 0.12);
+            text-align: center;
+        }
+
+        .admin-login h1 {
+            color: #285943;
+            margin-bottom: 10px;
+        }
+
+        .admin-login p {
+            color: #68746c;
+            margin-bottom: 25px;
+        }
+
+        .admin-login input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #e3e8df;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .admin-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            background: #285943;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .admin-btn:hover {
+            background: #183d2b;
+        }
+
+        #loginError {
+            color: #b42318;
+            margin-top: 15px;
+        }
+
+        #adminPanel {
+            display: none;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(35, 63, 47, 0.08);
+        }
+
+        .admin-header h1 {
+            color: #285943;
+            margin-bottom: 8px;
+        }
+
+        .admin-header p {
+            color: #68746c;
+        }
+
+        .logout-btn {
+            margin-top: 15px;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        .aduan-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(35, 63, 47, 0.08);
+        }
+
+        .aduan-card h3 {
+            color: #285943;
+            margin-bottom: 15px;
+        }
+
+        .aduan-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: #f7f5ed;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        .info-box strong {
+            display: block;
+            color: #285943;
+            margin-bottom: 5px;
+        }
+
+        .pesan-box {
+            padding: 15px;
+            background: #f7f5ed;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .aduan-card select,
+        .aduan-card textarea {
+            width: 100%;
+            padding: 13px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e3e8df;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .aduan-card textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .simpan-btn {
+            background: #285943;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 9px;
+            cursor: pointer;
+        }
+
+        .simpan-btn:hover {
+            background: #183d2b;
+        }
+
+        .kosong {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 18px;
+            color: #68746c;
+        }
+
+        @media (max-width: 700px) {
+
+            .admin-container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .admin-login {
+                margin: 60px auto;
+                padding: 25px;
+            }
+
+            .aduan-info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- =========================
+         LOGIN ADMIN
+    ========================= -->
+
+    <div class="admin-login" id="loginPanel">
+
+        <h1>🌿 Admin Harmoni Desa</h1>
+
+        <p>
+            Silakan masuk untuk mengelola aduan masyarakat.
+        </p>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Masukkan Password"
+        >
+
+        <button
+            class="admin-btn"
+            onclick="loginAdmin()">
+            Masuk sebagai Admin
+        </button>
+
+        <p id="loginError"></p>
+
+    </div>
+
+
+    <!-- =========================
+         PANEL ADMIN
+    ========================= -->
+
+    <div id="adminPanel">
+
+        <div class="admin-header">
+
+            <h1>📋 Data Aduan Masyarakat</h1>
+
+            <p>
+                Kelola aduan, status, dan tanggapan masyarakat Desa Semparuk.
+            </p>
+
+            <button
+                class="logout-btn"
+                onclick="logoutAdmin()">
+                Keluar
+            </button>
+
+        </div>
+
+
+        <div id="daftarAduan">
+
+            <div class="kosong">
+                Memuat data aduan...
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbxiq1dDf6KO71Wd3Xkz7rLrbxWhGJKs2JKeNhDeoypfVYrsnjF-ZkfGJGIj-4CIRyEi/exec";
+
+
+/* =========================
+   PASSWORD ADMIN
+========================= */
+
+const PASSWORD_ADMIN = "admin123";
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function loginAdmin() {
+
+    const password =
+        document.getElementById("password").value;
+
+    const error =
+        document.getElementById("loginError");
+
+    if (password === PASSWORD_ADMIN) {
+
+        document.getElementById("loginPanel").style.display = "none";
+
+        document.getElementById("adminPanel").style.display = "block";
+
+        error.textContent = "";
+
+        loadAduan();
+
+    } else {
+
+        error.textContent =
+            "Password salah.";
+
+    }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logoutAdmin() {
+
+    document.getElementById("adminPanel").style.display = "none";
+
+    document.getElementById("loginPanel").style.display = "block";
+
+    document.getElementById("password").value = "";
+
+}
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+function loadAduan() {
+
+    const daftar =
+        document.getElementById("daftarAduan");
+
+    daftar.innerHTML = `
+        <div class="kosong">
+            Memuat data aduan...
+        </div>
+    `;
+
+    fetch(scriptURL + "?action=getAduan")
+        .then(response => response.json())
+        .then(data => {
+
+            if (!data || data.length === 0) {
+
+                daftar.innerHTML = `
+                    <div class="kosong">
+                        Belum ada aduan masyarakat.
+                    </div>
+                `;
+
+                return;
+            }
+
+            daftar.innerHTML = "";
+
+            data.forEach((aduan, index) => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "aduan-card";
+
+                card.innerHTML = `
+
+                    <h3>
+                        Aduan #${index + 1}
+                    </h3>
+
+                    <div class="aduan-info">
+
+                        <div class="info-box">
+                            <strong>Nama</strong>
+                            ${aduan.nama || "-"}
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Email</strong>
+                            ${aduan.email || "-"}
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Kontak</strong>
+                            ${aduan.kontak || "-"}
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Jenis Aduan</strong>
+                            ${aduan.jenis || "-"}
+                        </div>
+
+                        <div class="info-box">
+                            <strong>Waktu</strong>
+                            ${aduan.waktu || "-"}
+                        </div>
+
+                    </div>
+
+                    <div class="pesan-box">
+
+                        <strong>Pesan / Aduan</strong>
+
+                        <p>
+                            ${aduan.pesan || "-"}
+                        </p>
+
+                    </div>
+
+
+                    <label>
+                        <strong>Status</strong>
+                    </label>
+
+                    <select id="status-${index}">
+
+                        <option value="Menunggu"
+                            ${aduan.status === "Menunggu" ? "selected" : ""}>
+                            Menunggu
+                        </option>
+
+                        <option value="Diproses"
+                            ${aduan.status === "Diproses" ? "selected" : ""}>
+                            Diproses
+                        </option>
+
+                        <option value="Selesai"
+                            ${aduan.status === "Selesai" ? "selected" : ""}>
+                            Selesai
+                        </option>
+
+                    </select>
+
+
+                    <label>
+                        <strong>Tanggapan Admin</strong>
+                    </label>
+
+                    <textarea
+                        id="tanggapan-${index}"
+                        placeholder="Tulis tanggapan admin..."
+                    >${aduan.tanggapan || ""}</textarea>
+
+
+                    <button
+                        class="simpan-btn"
+                        onclick="simpanAduan(${index})">
+                        Simpan Tanggapan
+                    </button>
+
+                `;
+
+                daftar.appendChild(card);
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            daftar.innerHTML = `
+                <div class="kosong">
+                    Data belum dapat dimuat.
+                </div>
+            `;
+
+        });
+
+}
+
+
+/* =========================
+   SIMPAN TANGGAPAN
+========================= */
+
+function simpanAduan(index) {
+
+    const status =
+        document.getElementById(
+            "status-" + index
+        ).value;
+
+    const tanggapan =
+        document.getElementById(
+            "tanggapan-" + index
+        ).value;
+
+
+    alert(
+        "Status: " + status +
+        "\nTanggapan: " + tanggapan +
+        "\n\nFitur penyimpanan akan dihubungkan ke Google Script."
+    );
+
+}
+
+</script>
+
+</body>
+
+  </html>
