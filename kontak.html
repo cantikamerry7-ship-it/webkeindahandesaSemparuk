@@ -470,76 +470,38 @@
     "https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec";
 
 
-    function berhasilKirim() {
+    async function kirimAduan(event) {
+  event.preventDefault();
 
-      setTimeout(function() {
+  const form = event.target;
+  const dataForm = new FormData(form);
 
-        document.getElementById("pesanBerhasil").innerText =
-        "Pengajuan berhasil dikirim ✅.";
+  document.getElementById("pesanBerhasil").innerText =
+    "Sedang mengirim pengajuan...";
 
-      }, 1000);
+  try {
+    const response = await fetch(scriptURLCek, {
+      method: "POST",
+      body: dataForm
+    });
 
+    const data = await response.json();
+
+    if (data.status === "success") {
+      document.getElementById("pesanBerhasil").innerHTML =
+        "✅ Pengajuan berhasil dikirim!<br><br>" +
+        "🔑 <b>Nomor Token:</b><br>" +
+        "<strong>" + data.token + "</strong><br><br>" +
+        "Simpan token ini untuk mengecek status aduan.";
+
+      form.reset();
     }
 
-
-    function cekAduan() {
-
-      const email =
-      document.getElementById("emailCek").value.trim();
-
-      if (!email) {
-
-        alert("Masukkan email terlebih dahulu.");
-
-        return;
-
-      }
-
-      document.getElementById("hasilCek").innerText =
-      "Sedang memeriksa data...";
-
-
-      fetch(
-        scriptURLCek +
-        "?action=cekAduan&email=" +
-        encodeURIComponent(email)
-      )
-
-      .then(response => response.json())
-
-      .then(data => {
-
-        if (data.status === "tidak_ditemukan") {
-
-          document.getElementById("hasilCek").innerHTML =
-          "<p>Data pengajuan tidak ditemukan.</p>";
-
-        } else {
-
-          document.getElementById("hasilCek").innerHTML =
-
-          "<p><b>Nama:</b> " + data.nama + "</p>" +
-
-          "<p><b>Jenis Aduan:</b> " + data.jenis + "</p>" +
-
-          "<p><b>Status:</b> " + data.status + "</p>" +
-
-          "<p><b>Tanggapan Admin:</b> " +
-          data.tanggapan + "</p>";
-
-        }
-
-      })
-
-      .catch(error => {
-
-        document.getElementById("hasilCek").innerText =
-        "Terjadi kesalahan. Silakan coba lagi.";
-
-      });
-
-    }
-
+  } catch (error) {
+    document.getElementById("pesanBerhasil").innerText =
+      "Terjadi kesalahan. Silakan coba lagi.";
+  }
+}
   </script>
 
 
