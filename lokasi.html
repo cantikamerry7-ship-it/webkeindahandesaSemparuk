@@ -7,50 +7,146 @@
   <title>Lokasi Desa Semparuk</title>
 
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    .location-intro {
+      text-align: center;
+      padding: 60px 20px;
+      background: #285943;
+      color: white;
+    }
+
+    .location-intro span {
+      letter-spacing: 3px;
+      font-size: 13px;
+    }
+
+    .location-intro h1 {
+      font-size: 42px;
+      margin: 20px 0 12px;
+    }
+
+    .location-intro p {
+      font-size: 16px;
+    }
+
+    .location-section {
+      padding: 50px 24px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .location-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px #0000000d;
+    }
+
+    .location-card .emoji {
+      font-size: 35px;
+    }
+
+    .location-card h2 {
+      color: #285943;
+      margin: 15px 0;
+    }
+
+    .location-card p {
+      color: #777;
+      line-height: 1.8;
+    }
+
+    .map-box {
+      margin-top: 35px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px #00000012;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+    }
+
+    .map-button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 25px;
+      background: #285943;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+    }
+
+    @media (max-width: 700px) {
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-intro h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Harmoni Desa</div>
+  <header>
+    <nav class="navbar">
 
-    <div class="menu-toggle">☰</div>
+      <a href="index.html" class="logo">
+        🌿 Harmoni Desa
+      </a>
 
-    <nav class="nav-links">
-      <a href="index.html">Beranda</a>
-      <a href="tentang.html">Tentang</a>
-      <a href="alam.html">Alam</a>
-      <a href="budaya.html">Budaya</a>
-      <a href="galeri.html">Galeri</a>
-      <a href="lokasi.html" class="active">Lokasi</a>
-      <a href="kontak.html">Kontak</a>
-      <a href="admin-login.html">🔐 Admin</a>
+      <button class="menu-toggle">☰</button>
+
+      <nav class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="alam.html">Alam</a>
+        <a href="budaya.html">Budaya</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="lokasi.html" class="active">Lokasi</a>
+        <a href="kontak.html">Kontak</a>
+        <a href="admin-login.html">🔐 Admin</a>
+      </nav>
+
     </nav>
   </header>
 
-
-  <!-- HEADER HALAMAN -->
-  <section class="page-header">
-    <p class="small-title">TEMUKAN KAMI</p>
+  <!-- JUDUL -->
+  <section class="location-intro">
+    <span>TEMUKAN KAMI</span>
 
     <h1>Lokasi Desa Semparuk</h1>
 
     <p>
-      Temukan lokasi Desa Semparuk melalui peta di bawah ini.
+      Kenali lokasi dan wilayah Desa Semparuk
+      melalui informasi dan peta berikut.
     </p>
   </section>
 
+  <!-- INFORMASI -->
+  <section class="location-section">
 
-  <!-- INFORMASI LOKASI -->
-  <section class="section location-section">
-
-    <div class="location-info">
+    <div class="location-grid">
 
       <div class="location-card">
-        <div class="location-icon">📍</div>
+        <div class="emoji">📍</div>
 
-        <h3>Alamat</h3>
+        <h2>Alamat Desa</h2>
 
         <p>
           Kecamatan Semparuk,<br>
@@ -59,69 +155,55 @@
         </p>
       </div>
 
-
       <div class="location-card">
-        <div class="location-icon">🗺️</div>
+        <div class="emoji">🌿</div>
 
-        <h3>Petunjuk Lokasi</h3>
+        <h2>Wilayah Desa</h2>
 
         <p>
-          Gunakan Google Maps untuk
-          melihat lokasi Desa Semparuk.
+          Desa Semparuk merupakan bagian
+          dari wilayah Kabupaten Sambas,
+          Kalimantan Barat.
         </p>
       </div>
 
     </div>
 
-  </section>
+    <!-- PETA -->
+    <div style="margin-top: 55px; text-align: center;">
 
+      <span style="letter-spacing: 3px; color: #777;">
+        PETUNJUK LOKASI
+      </span>
 
-  <!-- GOOGLE MAPS -->
-  <section class="section">
+      <h2 style="color: #285943; font-size: 32px;">
+        Temukan Desa Semparuk
+      </h2>
 
-    <div class="location-heading">
-      <p class="small-title">PETA LOKASI</p>
+      <div class="map-box">
 
-      <h2>Desa Semparuk</h2>
-    </div>
+        <iframe
+          src="https://www.google.com/maps?q=Semparuk%2C%20Kabupaten%20Sambas&output=embed"
+          loading="lazy">
+        </iframe>
 
-
-    <div class="map-container">
-
-      <iframe
-        src="https://www.google.com/maps?q=Desa%20Semparuk%20Sambas&output=embed"
-        width="100%"
-        height="400"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy">
-      </iframe>
-
-    </div>
-
-
-    <div class="map-button">
+      </div>
 
       <a
         href="https://maps.app.goo.gl/bKEbpNQTK91weGcN9?g_st=ac"
-        target="_blank">
-
-        Buka Google Maps
-
+        target="_blank"
+        class="map-button">
+        📍 Buka Google Maps →
       </a>
 
     </div>
 
   </section>
 
-
   <!-- FOOTER -->
-  <footer class="footer">
-
+  <footer style="text-align: center; padding: 30px; background: #285943; color: white;">
     <p>© 2026 Harmoni Desa Semparuk</p>
-
   </footer>
-
 
   <script src="script.js"></script>
 
