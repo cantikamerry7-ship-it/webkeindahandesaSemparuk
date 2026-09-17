@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* KONTAK PAGE */
-
     .contact-wrapper {
       max-width: 1100px;
       margin: 60px auto;
@@ -144,6 +142,7 @@
       color: #285943;
       font-size: 14px;
       margin-top: 15px;
+      line-height: 1.8;
     }
 
     .check-card {
@@ -270,85 +269,89 @@
     </div>
 
 
-<!-- INFORMASI KONTAK -->
-<div class="contact-card">
+    <!-- CONTACT GRID -->
+    <div class="contact-grid">
 
-  <p class="small-title">INFORMASI KONTAK</p>
+      <!-- INFORMASI KONTAK -->
+      <div class="contact-card">
 
-  <h3>Terhubung Bersama Kami</h3>
+        <p class="small-title">INFORMASI KONTAK</p>
 
-  <p>
-    Silakan hubungi kami melalui informasi
-    kontak berikut untuk komunikasi lebih lanjut.
-  </p>
+        <h3>Terhubung Bersama Kami</h3>
 
-  <!-- WHATSAPP -->
-  <div class="contact-detail">
-
-    <span>WhatsApp</span>
-
-    <strong>
-      <a
-        href="https://wa.me/6285754846030"
-        target="_blank"
-        style="color: #285943; text-decoration: none;">
-
-        0857 5484 6030
-
-      </a>
-    </strong>
-
-  </div>
+        <p>
+          Silakan hubungi kami melalui informasi
+          kontak berikut untuk komunikasi lebih lanjut.
+        </p>
 
 
-  <!-- EMAIL -->
-  <div class="contact-detail">
+        <!-- WHATSAPP -->
+        <div class="contact-detail">
 
-    <span>Email</span>
+          <span>WhatsApp</span>
 
-    <strong>
-      <a
-        href="mailto:cantikamerry7@gmail.com"
-        style="color: #285943; text-decoration: none;">
+          <strong>
+            <a
+              href="https://wa.me/6285754846030"
+              target="_blank"
+              style="color: #285943; text-decoration: none;">
 
-        cantikamerry7@gmail.com
+              0857 5484 6030
 
-      </a>
-    </strong>
+            </a>
+          </strong>
 
-  </div>
-
-
-  <!-- ALAMAT -->
-  <div class="contact-detail">
-
-    <span>Alamat</span>
-
-    <strong>
-      Kecamatan Semparuk,<br>
-      Kabupaten Sambas,<br>
-      Kalimantan Barat.
-    </strong>
-
-  </div>
+        </div>
 
 
-  <!-- PESAN -->
-  <div class="contact-detail">
+        <!-- EMAIL -->
+        <div class="contact-detail">
 
-    <span>Layanan</span>
+          <span>Email</span>
 
-    <strong>
-      Informasi dan Aspirasi Masyarakat
-    </strong>
+          <strong>
+            <a
+              href="mailto:cantikamerry7@gmail.com"
+              style="color: #285943; text-decoration: none;">
 
-  </div>
+              cantikamerry7@gmail.com
 
-</div>
+            </a>
+          </strong>
+
+        </div>
+
+
+        <!-- ALAMAT -->
+        <div class="contact-detail">
+
+          <span>Alamat</span>
+
+          <strong>
+            Kecamatan Semparuk,<br>
+            Kabupaten Sambas,<br>
+            Kalimantan Barat.
+          </strong>
+
+        </div>
+
+
+        <!-- LAYANAN -->
+        <div class="contact-detail">
+
+          <span>Layanan</span>
+
+          <strong>
+            Informasi dan Aspirasi Masyarakat
+          </strong>
+
+        </div>
+
+      </div>
 
 
       <!-- FORM ADUAN -->
-      <div class="form-card" style="margin-top: 30px;">
+      <div class="form-card">
 
         <h3>Pengajuan Aduan</h3>
 
@@ -357,16 +360,14 @@
           gunakan informasi yang benar.
         </p>
 
-        <form
-          action="https://script.google.com/macros/s/AKfycbyKvv64sjX8rlH57jKSExRYY2Hwe7zco_QMO1DuA_2JmlWeIMl8ACrfvwiYZU9_Dw/exec"
-          method="POST"
-          target="hiddenFrame"
-          onsubmit="berhasilKirim()">
+
+        <form onsubmit="kirimAduan(event)">
 
           <input
             type="hidden"
             name="action"
             value="kirimAduan">
+
 
           <input
             type="text"
@@ -374,11 +375,13 @@
             placeholder="Nama lengkap"
             required>
 
+
           <input
             type="email"
             name="email"
             placeholder="Alamat email"
             required>
+
 
           <input
             type="text"
@@ -386,23 +389,55 @@
             placeholder="Nomor kontak"
             required>
 
+
           <select name="jenis" required>
-  <option value="">Pilih jenis aduan</option>
-  <option value="Fasilitas Desa">Fasilitas Desa</option>
-  <option value="Kebersihan Lingkungan">Kebersihan Lingkungan</option>
-  <option value="Infrastruktur">Infrastruktur</option>
-  <option value="Pelayanan Masyarakat">Pelayanan Masyarakat</option>
-  <option value="Keamanan Desa">Keamanan Desa</option>
-  <option value="Kegiatan Desa">Kegiatan Desa</option>
-  <option value="Saran dan Masukan">Saran dan Masukan</option>
-  <option value="Pertanyaan">Pertanyaan</option>
-  <option value="Lainnya">Lainnya</option>
+
+            <option value="">Pilih jenis aduan</option>
+
+            <option value="Fasilitas Desa">
+              Fasilitas Desa
+            </option>
+
+            <option value="Kebersihan Lingkungan">
+              Kebersihan Lingkungan
+            </option>
+
+            <option value="Infrastruktur">
+              Infrastruktur
+            </option>
+
+            <option value="Pelayanan Masyarakat">
+              Pelayanan Masyarakat
+            </option>
+
+            <option value="Keamanan Desa">
+              Keamanan Desa
+            </option>
+
+            <option value="Kegiatan Desa">
+              Kegiatan Desa
+            </option>
+
+            <option value="Saran dan Masukan">
+              Saran dan Masukan
+            </option>
+
+            <option value="Pertanyaan">
+              Pertanyaan
+            </option>
+
+            <option value="Lainnya">
+              Lainnya
+            </option>
+
           </select>
+
 
           <textarea
             name="pesan"
             placeholder="Tuliskan pesan atau aduan..."
             required></textarea>
+
 
           <button type="submit">
             Kirim Pengajuan
@@ -410,10 +445,6 @@
 
         </form>
 
-        <iframe
-          name="hiddenFrame"
-          style="display:none;">
-        </iframe>
 
         <p
           id="pesanBerhasil"
@@ -430,25 +461,28 @@
 
       <h3>Periksa Status Pengajuan</h3>
 
-     <p>
-  Masukkan nomor token yang kamu dapatkan
-  setelah mengirim pengaduan untuk melihat
-  status dan tanggapan admin.
-</p>
+      <p>
+        Masukkan nomor token yang kamu dapatkan
+        setelah mengirim pengaduan untuk melihat
+        status dan tanggapan admin.
+      </p>
+
 
       <div class="check-form">
 
         <input
-  type="text"
-  id="tokenCek"
-  placeholder="Masukkan nomor token"
-  required>
+          type="text"
+          id="tokenCek"
+          placeholder="Masukkan nomor token"
+          required>
+
 
         <button onclick="cekAduan()">
           Periksa
         </button>
 
       </div>
+
 
       <div id="hasilCek"></div>
 
@@ -471,37 +505,131 @@
 
 
     async function kirimAduan(event) {
-  event.preventDefault();
 
-  const form = event.target;
-  const dataForm = new FormData(form);
+      event.preventDefault();
 
-  document.getElementById("pesanBerhasil").innerText =
-    "Sedang mengirim pengajuan...";
+      const form = event.target;
 
-  try {
-    const response = await fetch(scriptURLCek, {
-      method: "POST",
-      body: dataForm
-    });
+      const dataForm = new FormData(form);
 
-    const data = await response.json();
+      const pesan =
+        document.getElementById("pesanBerhasil");
 
-    if (data.status === "success") {
-      document.getElementById("pesanBerhasil").innerHTML =
-        "✅ Pengajuan berhasil dikirim!<br><br>" +
-        "🔑 <b>Nomor Token:</b><br>" +
-        "<strong>" + data.token + "</strong><br><br>" +
-        "Simpan token ini untuk mengecek status aduan.";
+      pesan.innerText =
+        "Sedang mengirim pengajuan...";
 
-      form.reset();
+
+      try {
+
+        const response = await fetch(scriptURLCek, {
+
+          method: "POST",
+
+          body: dataForm
+
+        });
+
+
+        const data = await response.json();
+
+
+        if (data.status === "success") {
+
+          pesan.innerHTML =
+            "✅ Pengajuan berhasil dikirim!<br><br>" +
+
+            "🔑 <b>Nomor Token Kamu:</b><br>" +
+
+            "<strong>" + data.token + "</strong><br><br>" +
+
+            "Simpan token ini untuk mengecek status aduan.";
+
+
+          form.reset();
+
+
+        } else {
+
+          pesan.innerText =
+            "Pengajuan gagal dikirim.";
+
+        }
+
+
+      } catch (error) {
+
+        pesan.innerText =
+          "Terjadi kesalahan. Silakan coba lagi.";
+
+      }
+
     }
 
-  } catch (error) {
-    document.getElementById("pesanBerhasil").innerText =
-      "Terjadi kesalahan. Silakan coba lagi.";
-  }
-}
+
+
+    async function cekAduan() {
+
+      const token =
+        document.getElementById("tokenCek").value.trim();
+
+
+      const hasil =
+        document.getElementById("hasilCek");
+
+
+      if (!token) {
+
+        hasil.innerText =
+          "Masukkan nomor token terlebih dahulu.";
+
+        return;
+
+      }
+
+
+      hasil.innerText =
+        "Sedang memeriksa status...";
+
+
+      try {
+
+        const response = await fetch(
+          scriptURLCek +
+          "?action=cekAduan&token=" +
+          encodeURIComponent(token)
+        );
+
+
+        const data = await response.json();
+
+
+        if (data.status === "success") {
+
+          hasil.innerHTML =
+            "<b>Status Pengajuan:</b> " +
+            data.statusAduan +
+            "<br><br>" +
+
+            "<b>Tanggapan Admin:</b> " +
+            (data.tanggapan || "Belum ada tanggapan.");
+
+        } else {
+
+          hasil.innerText =
+            "Token tidak ditemukan.";
+
+        }
+
+
+      } catch (error) {
+
+        hasil.innerText =
+          "Terjadi kesalahan saat memeriksa status.";
+
+      }
+
+    }
+
   </script>
 
 
